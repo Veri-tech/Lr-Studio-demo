@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — LR Studios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #010102; color: #f7f8f8; font-family: -apple-system, "SF Pro Display", Inter, system-ui, sans-serif; overflow-x: hidden; }
+  a { color: #f7f8f8; text-decoration: none; }
+  a:hover { color: #828fff; }
+  ::selection { background: #5e6ad2; color: #ffffff; }
+  img, video { max-width: 100%; display: block; }
+  button { font-family: inherit; }
+  :focus-visible { outline: 2px solid rgba(94,105,209,0.5); outline-offset: 2px; }
+  @keyframes grainShift { 0% { transform: translate3d(0,0,0); } 50% { transform: translate3d(1%,-2%,0); } 100% { transform: translate3d(0,0,0); } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</helmet>
+
+<div style="position: relative; width: 100%; background: #010102;">
+
+  <header style="position: sticky; top: 0; z-index: 60; padding: 12px clamp(16px, 4vw, 32px) 0; background: transparent;">
+    <div style="width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 10px 0 14px; height: 54px; border: 1px solid #23252a; border-radius: 14px; background: rgba(15,16,17,0.72); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); box-shadow: 0 12px 34px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="LR Studios - Linear.dc.html" style="display: flex; align-items: center; gap: 9px;">
+        <span style="width: 22px; height: 22px; border-radius: 6px; background: #5e6ad2; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: -0.02em;">LR</span>
+        <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.3px; color: #f7f8f8;">LR Studios</span>
+      </a>
+
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav style="display: flex; align-items: center; gap: 26px;">
+          <a href="Work - Linear.dc.html" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">Work</a>
+          <a href="Services - Linear.dc.html" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">Services</a>
+          <a href="About - Linear.dc.html" style="font-size: 14px; color: #f7f8f8;" style-hover="color: #f7f8f8;">About</a>
+          <a href="Contact - Linear.dc.html" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">Contact</a>
+        </nav>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <a href="Contact - Linear.dc.html" style="background: #0f1011; border: 1px solid #23252a; color: #f7f8f8; font-size: 14px; font-weight: 500; padding: 9px 14px; border-radius: 8px; min-height: 40px; display: flex; align-items: center; white-space: nowrap;" style-hover="background: #141516; color: #f7f8f8;">Get a quote</a>
+          <a href="Contact - Linear.dc.html" style="background: #5e6ad2; color: #ffffff; font-size: 14px; font-weight: 500; padding: 9px 14px; border-radius: 8px; min-height: 40px; display: flex; align-items: center; white-space: nowrap;" style-hover="background: #828fff; color: #ffffff;">Book a shoot</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ toggleNav }}" aria-label="Menu" style="width: 44px; height: 44px; background: #0f1011; border: 1px solid #23252a; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer;">
+          <span style="display: block; width: 16px; height: 1.5px; background: #f7f8f8;"></span>
+          <span style="display: block; width: 16px; height: 1.5px; background: #f7f8f8;"></span>
+        </button>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="width: 100%; max-width: 1280px; margin: 8px auto 0; border: 1px solid #23252a; border-radius: 14px; background: rgba(15,16,17,0.94); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 16px 40px rgba(0,0,0,0.55); padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 2px;">
+        <a href="Work - Linear.dc.html" onClick="{{ closeNav }}" style="font-size: 16px; font-weight: 500; letter-spacing: -0.2px; padding: 12px 0; color: #f7f8f8;">Work</a>
+        <a href="Services - Linear.dc.html" onClick="{{ closeNav }}" style="font-size: 16px; font-weight: 500; letter-spacing: -0.2px; padding: 12px 0; color: #f7f8f8;">Services</a>
+        <a href="About - Linear.dc.html" onClick="{{ closeNav }}" style="font-size: 16px; font-weight: 500; letter-spacing: -0.2px; padding: 12px 0; color: #f7f8f8;">About</a>
+        <a href="Contact - Linear.dc.html" onClick="{{ closeNav }}" style="font-size: 16px; font-weight: 500; letter-spacing: -0.2px; padding: 12px 0; color: #f7f8f8;">Contact</a>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+          <a href="Contact - Linear.dc.html" onClick="{{ closeNav }}" style="background: #0f1011; border: 1px solid #23252a; color: #f7f8f8; font-size: 14px; font-weight: 500; padding: 12px 14px; border-radius: 8px; text-align: center;">Get a quote</a>
+          <a href="Contact - Linear.dc.html" onClick="{{ closeNav }}" style="background: #5e6ad2; color: #ffffff; font-size: 14px; font-weight: 500; padding: 12px 14px; border-radius: 8px; text-align: center;">Book a shoot</a>
+        </div>
+      </div>
+    </sc-if>
+  </header>
+
+  <section style="position: relative; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; inset: -60px; pointer-events: none; mix-blend-mode: overlay; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size: 300px 300px; animation: grainShift 1.4s steps(3) infinite; opacity: {{ grainOpacity }};"></div>
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 32px) clamp(32px, 4vw, 56px);">
+      <p data-reveal="1" style="margin: 0 0 12px; font-size: 13px; font-weight: 500; letter-spacing: 0.4px; color: #5e6ad2;">About us</p>
+      <h1 data-reveal="1" style="margin: 0; max-width: 900px; font-size: clamp(34px, 6vw, 72px); font-weight: 600; line-height: 1.05; letter-spacing: -0.036em; color: #f7f8f8;">Behind the lens.</h1>
+      <p data-reveal="1" style="margin: 24px 0 0; max-width: 520px; font-size: clamp(16px, 1.5vw, 18px); line-height: 1.5; letter-spacing: -0.1px; color: #8a8f98;">LR Studios captures stories and creates meaningful visual experiences for individuals, brands, and organisations through photography, videography, and creative content.</p>
+    </div>
+  </section>
+
+  <section style="border-top: 1px solid #23252a;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(40px, 5vw, 64px) clamp(16px, 4vw, 32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px;">
+      <article data-reveal="1" style="background: #0f1011; border: 1px solid #23252a; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.4px; color: #5e6ad2;">Mission</span>
+        <h2 style="margin: 0; font-size: clamp(24px, 3vw, 40px); font-weight: 600; line-height: 1.15; letter-spacing: -0.025em; color: #f7f8f8;">Quality, creativity, professionalism, storytelling.</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #8a8f98;">Four commitments that decide how we scope a brief, who we put on set, and what we hand over at the end of it.</p>
+      </article>
+      <article data-reveal="1" style="background: #141516; border: 1px solid #34343a; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 12px;">
+        <span style="font-size: 13px; font-weight: 500; letter-spacing: 0.4px; color: #5e6ad2;">Vision</span>
+        <h2 style="margin: 0; font-size: clamp(24px, 3vw, 40px); font-weight: 600; line-height: 1.15; letter-spacing: -0.025em; color: #f7f8f8;">A leading creative media studio in South Africa.</h2>
+        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #8a8f98;">Recognised for exceptional visual storytelling — work that holds up on a billboard, a boardroom screen, and a phone.</p>
+      </article>
+    </div>
+  </section>
+
+  <section style="border-top: 1px solid #23252a;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(40px, 5vw, 64px) clamp(16px, 4vw, 32px);">
+      <h2 data-reveal="1" style="margin: 0 0 32px; font-size: clamp(28px, 4vw, 56px); font-weight: 600; line-height: 1.1; letter-spacing: -0.032em; color: #f7f8f8;">How we work.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px;">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+          <div data-reveal="1" style="background: #0f1011; border: 1px solid #23252a; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+            <span style="width: 28px; height: 28px; border-radius: 8px; background: #141516; border: 1px solid #23252a; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #828fff;">{{ st.num }}</span>
+            <h3 style="margin: 0; font-size: 22px; font-weight: 500; line-height: 1.25; letter-spacing: -0.4px; color: #f7f8f8;">{{ st.title }}</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #8a8f98;">{{ st.line }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div data-reveal="1" style="margin-top: 32px; background: #0f1011; border: 1px solid #23252a; border-top-color: rgba(247,248,248,0.09); border-radius: 16px; padding: 24px;">
+        <div style="position: relative; border-radius: 8px; overflow: hidden; background: #18191a; background-image: repeating-linear-gradient(128deg, rgba(247,248,248,0.04) 0px, rgba(247,248,248,0.04) 1px, transparent 1px, transparent 12px); aspect-ratio: 21 / 9;">
+          <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}">
+            <span style="position: absolute; left: 12px; bottom: 11px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #62666d;">[CLIENT MEDIA] studio / behind the scenes · 21:9</span>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top: 1px solid #23252a;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 32px);">
+      <div data-reveal="1" style="background: #0f1011; border: 1px solid #23252a; border-top-color: rgba(247,248,248,0.09); border-radius: 12px; padding: clamp(28px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+        <div style="max-width: 460px;">
+          <h2 style="margin: 0 0 8px; font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: -0.6px; color: #f7f8f8;">Ready to tell your story?</h2>
+          <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #8a8f98;">Send the brief, the date, and the venue. A scoped quote comes back within one working day.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <a href="Contact - Linear.dc.html" style="background: #5e6ad2; color: #ffffff; font-size: 14px; font-weight: 500; padding: 11px 16px; border-radius: 8px; min-height: 42px; display: flex; align-items: center; white-space: nowrap;" style-hover="background: #828fff; color: #ffffff;">Book a shoot</a>
+          <a href="Contact - Linear.dc.html" style="background: #ffffff; color: #000000; font-size: 14px; font-weight: 500; padding: 11px 16px; border-radius: 8px; min-height: 42px; display: flex; align-items: center; white-space: nowrap;" style-hover="background: #f5f6f6; color: #000000;">Make an enquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid #23252a; background: #010102;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 64px clamp(16px, 4vw, 32px) 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 280px;">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="width: 22px; height: 22px; border-radius: 6px; background: #5e6ad2; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">LR</span>
+          <span style="font-size: 15px; font-weight: 600; letter-spacing: -0.3px; color: #f7f8f8;">LR Studios</span>
+        </div>
+        <p style="margin: 0; font-size: 12px; line-height: 1.4; color: #62666d;">A creative media studio in Johannesburg, built on exceptional visual storytelling.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 12px; color: #62666d;">Explore</span>
+        <a href="Work - Linear.dc.html" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">Work</a>
+        <a href="Services - Linear.dc.html" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">Services</a>
+        <a href="About - Linear.dc.html" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">About</a>
+        <a href="Contact - Linear.dc.html" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">Contact</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 12px; color: #62666d;">Contact</span>
+        <a href="https://wa.me/27000000000" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">WhatsApp +27 00 000 0000</a>
+        <a href="mailto:hello@lrstudios.co.za" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">hello@lrstudios.co.za</a>
+        <a href="https://instagram.com" style="font-size: 14px; color: #8a8f98;" style-hover="color: #f7f8f8;">@lrstudios</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <span style="font-size: 12px; color: #62666d;">Book</span>
+        <a href="Contact - Linear.dc.html" style="background: #5e6ad2; color: #ffffff; font-size: 14px; font-weight: 500; padding: 11px 14px; border-radius: 8px; text-align: center; min-height: 42px; display: flex; align-items: center; justify-content: center;" style-hover="background: #828fff; color: #ffffff;">Book a shoot</a>
+        <a href="Contact - Linear.dc.html" style="background: #0f1011; border: 1px solid #23252a; color: #f7f8f8; font-size: 14px; font-weight: 500; padding: 11px 14px; border-radius: 8px; text-align: center; min-height: 42px; display: flex; align-items: center; justify-content: center;" style-hover="background: #141516;">Get a quote</a>
+      </div>
+    </div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: 20px clamp(16px, 4vw, 32px) 40px; border-top: 1px solid #23252a; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;">
+      <span style="font-size: 12px; color: #62666d;">© 2026 LR Studios. All rights reserved.</span>
+      <span style="font-size: 12px; color: #62666d;">Johannesburg · South Africa</span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/27000000000" aria-label="Chat on WhatsApp" style="position: fixed; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px); z-index: 70; width: 52px; height: 52px; border-radius: 9999px; background: #27a644; display: flex; align-items: center; justify-content: center;" style-hover="background: #23923d;">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="#010102" aria-hidden="true"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.94.54 3.75 1.48 5.3L2 22l4.98-1.63a9.9 9.9 0 0 0 5.06 1.38c5.44 0 9.84-4.4 9.84-9.84S17.48 2 12.04 2Zm5.72 13.9c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.16-2.9-.72-2.25-1.06-3.66-3.44-3.77-3.6-.11-.16-.9-1.24-.9-2.37 0-1.13.58-1.68.79-1.9.2-.23.44-.28.6-.28h.42c.14 0 .32-.03.5.4.18.44.63 1.56.68 1.67.05.11.08.24.01.39-.07.15-.36.55-.5.7-.13.16-.27.3-.11.58.16.28.71 1.2 1.53 1.94 1.05.95 1.6 1.11 1.87 1.24.2.1.35.08.48-.06.15-.16.62-.72.79-.97.16-.25.33-.2.55-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.05.1.05.6-.19 1.29Z"/></svg>
+  </a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;grainStrength&quot;: {
+    &quot;editor&quot;: &quot;range&quot;,
+    &quot;default&quot;: 0.16,
+    &quot;min&quot;: 0,
+    &quot;max&quot;: 0.4,
+    &quot;step&quot;: 0.02,
+    &quot;tsType&quot;: &quot;number&quot;,
+    &quot;section&quot;: &quot;Texture&quot;
+  },
+  &quot;showMediaLabels&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;,
+    &quot;section&quot;: &quot;Media&quot;
+  },
+  &quot;animateOnScroll&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;,
+    &quot;section&quot;: &quot;Texture&quot;
+  }
+}">
+const STEPS = [
+  { num: "01", title: "Choose your shoot", line: "Pick the discipline that fits the brief — or tell us the outcome and we will scope it with you." },
+  { num: "02", title: "Get a custom quote", line: "A costed proposal with crew, hours, deliverables, and turnaround. No packages you did not ask for." },
+  { num: "03", title: "We capture your story", line: "We shoot, edit, and grade, then hand over a gallery of licensed, ready-to-publish media." }
+];
+
+class Component extends DCLogic {
+  state = { vw: typeof window !== "undefined" ? window.innerWidth : 1440, navOpen: false, filter: "All", lightboxId: null, sent: false };
+
+  componentDidMount() {
+    this._r = () => this.setState({ vw: window.innerWidth });
+    window.addEventListener("resize", this._r);
+    this._k = (e) => {
+      if (this.state.lightboxId == null || !this.step) return;
+      if (e.key === "Escape") this.setState({ lightboxId: null });
+      if (e.key === "ArrowRight") this.step(1);
+      if (e.key === "ArrowLeft") this.step(-1);
+    };
+    window.addEventListener("keydown", this._k);
+    this.reveal();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._r);
+    window.removeEventListener("keydown", this._k);
+  }
+
+  reveal() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || this.props.animateOnScroll === false || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      io.__fired = true;
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        en.target.style.opacity = "1";
+        en.target.style.transform = "none";
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: "-8% 0px -8% 0px" });
+    document.querySelectorAll("[data-reveal]").forEach((n) => {
+      n.style.opacity = "0";
+      n.style.transform = "translateY(12px)";
+      const own = n.style.transition;
+      n.style.transition = "opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1)" + (own ? ", " + own : "");
+      io.observe(n);
+      if (n.getBoundingClientRect().top < window.innerHeight * 0.92) { n.style.opacity = "1"; n.style.transform = "none"; io.unobserve(n); }
+    });
+    setTimeout(() => {
+      if (io.__fired) return;
+      io.disconnect();
+      document.querySelectorAll("[data-reveal]").forEach((n) => { n.style.opacity = "1"; n.style.transform = "none"; });
+    }, 1200);
+  }
+
+  navVals() {
+    const vw = this.state.vw;
+    return {
+      isDesktop: vw >= 768,
+      isMobile: vw < 768,
+      navOpen: this.state.navOpen && vw < 768,
+      toggleNav: () => this.setState((s) => ({ navOpen: !s.navOpen })),
+      closeNav: () => this.setState({ navOpen: false }),
+      grainOpacity: this.props.grainStrength ?? 0.16,
+      showLabels: this.props.showMediaLabels !== false
+    };
+  }
+
+  renderVals() { return Object.assign(this.navVals(), { steps: STEPS }); }
+}
+</script>
+</body>
+</html>
